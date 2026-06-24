@@ -2,8 +2,10 @@
 
 花蓮慈濟醫院公共傳播室內部工具：上傳 PDF，自動找出繁體中文錯別字，產出校稿報告並可下載 Excel。
 
-## DEMO網址
-https://chinese-proofreader.streamlit.app/
+## 網址
+- 系統網址：https://chinese-proofreader.streamlit.app/
+- 操作說明：https://www.youtube.com/watch?v=dKYN2_eb69Q
+
 
 ## 功能
 
