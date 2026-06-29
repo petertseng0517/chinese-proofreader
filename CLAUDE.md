@@ -12,13 +12,15 @@
 
 ## 限制
 - 檔案大小上限 20MB
-- 頁數上限 100 頁
+- 頁數上限 500 頁
 
 ## API 設定
 - `ANTHROPIC_API_KEY` 存放於專案根目錄 `.env`（已加入 `.gitignore`，不會上傳到 GitHub）
 - `app.py` 用 `python-dotenv` 的 `load_dotenv()` 讀取 `.env`，再由 `anthropic.Anthropic()` 預設行為取用環境變數（不寫死金鑰）
 - 模型：`claude-opus-4-8`，搭配 adaptive thinking + `output_config.effort: "high"`
 - 校稿結果用 `output_config.format`（json_schema）強制結構化輸出，避免手動解析自由文字
+- `max_tokens=64000`，並使用 `client.messages.stream()` 串流請求（大文件、高 `max_tokens` 必須串流，避免 SDK 逾時）
+- 若回應 `stop_reason == "max_tokens"`（輸出被截斷）會顯示錯誤並請使用者拆檔重試，不會嘗試解析不完整的 JSON
 
 ## 登入驗證
 部署在網路上時需要登入才能使用，帳密設定於 `.env`：
